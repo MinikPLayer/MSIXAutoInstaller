@@ -8,9 +8,9 @@ Download the MSIX Installer for your target architecture from [releases](https:/
 
 Put it into target directory, then place your published MSIX files into the "MSIX" folder.
 
-In MSIX directory there should be only one .cer file, which will be automatically placed into the Trusted People certificate store
+In MSIX directory there should be only one .cer file, which will be automatically placed into the Trusted People certificate store.
 
-Installer will then launch Windows App Installer for every .msix file inside the MSIX directory (not recursive)
+Installer will then launch Windows App Installer for every .msix file inside the MSIX directory (not recursive).
 
 # Portable version
 Portable version can be run on any architecture, but requires **Installer.dll** and **Installer.runtimeconfig.json** to be placed alongisde **Installer.exe** file to run. 
