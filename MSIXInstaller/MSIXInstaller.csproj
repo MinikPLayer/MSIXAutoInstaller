@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>MSIXInstaller.Program</StartupObject>
+    <ApplicationIcon>installer_icon.ico</ApplicationIcon>
+    <Title>MSIX Package installer</Title>
+    <SignAssembly>False</SignAssembly>
+    <AssemblyName>Installer</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="installer_icon.ico" />
+  </ItemGroup>
+
+</Project>
