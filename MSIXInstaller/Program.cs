@@ -46,9 +46,12 @@ namespace MSIXInstaller
             }
 
             var msixFiles = Directory.GetFiles(path, "*.msix");
-            if (msixFiles.Length == 0)
+            var appxFiles = Directory.GetFiles(path, "*.appx");
+
+            var installerFiles = msixFiles.Concat(appxFiles).ToArray();
+            if (installerFiles.Length == 0)
             {
-                Log.LogError("No MSIX packages found");
+                Log.LogError("No MSIX or APPX packages found");
                 return;
             }
 
@@ -70,8 +73,8 @@ namespace MSIXInstaller
 
             try
             {
-                foreach (var msixFile in msixFiles)
-                    MSIXInstaller.InstallMSIX(msixFile);
+                foreach (var installerFile in installerFiles)
+                    MSIXInstaller.InstallMSIX(installerFile);
             }
             catch (Exception e)
             {
