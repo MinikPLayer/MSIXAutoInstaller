@@ -17,18 +17,19 @@ namespace MSIXInstaller
 
         static void Run(string[] args)
         {
+            // TODO: Add architecture detection
             string path = Directory.GetCurrentDirectory();
             if (args.Length > 0)
             {
                 path = args[0];
             }
-            else if (Directory.Exists("MSIX"))
+            else if (Directory.Exists("Data"))
             {
-                path = Path.Combine(path, "MSIX");
+                path = Path.Combine(path, "Data");
             }
             else
             {
-                Log.LogError("Installer data corrupted or misconfigured:\n\nCannot find installer MSIX data directory. ");
+                Log.LogError("Installer data corrupted or misconfigured:\n\nCannot find installer data directory. ");
                 return;
             }
 
@@ -51,7 +52,7 @@ namespace MSIXInstaller
             var installerFiles = msixFiles.Concat(appxFiles).ToArray();
             if (installerFiles.Length == 0)
             {
-                Log.LogError("No MSIX or APPX packages found");
+                Log.LogError("No .msix or .appx packages found");
                 return;
             }
 
@@ -78,7 +79,7 @@ namespace MSIXInstaller
             }
             catch (Exception e)
             {
-                Log.LogError($"Cannot install the MSIX package, {e.Message}");
+                Log.LogError($"Error while installing packages - {e.Message}");
             }
         }
 
